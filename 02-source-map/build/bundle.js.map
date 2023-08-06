@@ -1,0 +1,13 @@
+{
+  "version": 3,
+  "file": "bundle.js",
+  "mappings": ";;;;;AAAA;AACA;AACA;AACA;AACA;AACA;AACA;AACA,M",
+  "sources": [
+    "webpack://02-source-map/./src/index.js"
+  ],
+  "sourcesContent": [
+    "//测试\r\nconst message = \"hello wrold\";\r\nconsole.log(message);\r\nconsole.log(a);\r\nconst foo = () => {\r\n  console.log(\"foo is dog\");\r\n};\r\nfoo();"
+  ],
+  "names": [],
+  "sourceRoot": ""
+}
