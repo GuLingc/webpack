@@ -1,3 +1,4 @@
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path"); //引入path
 
 module.exports = {
@@ -15,7 +16,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/, //x?:表示0个或者一个x
         use: {
           loader: "babel-loader",
           // options: {
@@ -31,4 +32,10 @@ module.exports = {
       },
     ],
   },
+  //打包html文件
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./index.html",
+    }),
+  ],
 };
