@@ -13,6 +13,10 @@ module.exports = {
     // 重新打包时，先将之前打包得文件夹删除掉
     clean: true,
   },
+  resolve: {
+    //可以是引入文件的时候不加文件的后缀名
+    extensions: [".js", ".json", ".wasm", ".jsx", ".vue",'.ts'],
+  },
   module: {
     rules: [
       {
@@ -30,6 +34,11 @@ module.exports = {
           // },
         },
       },
+      //解析ts
+      {
+      test: /\.ts$/,
+      use: "ts-loader" //安装ts-loader：npm install ts-loader -D   下一步创建tsconfig文件：tsc --init
+      }
     ],
   },
   //打包html文件

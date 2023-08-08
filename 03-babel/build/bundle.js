@@ -8036,6 +8036,23 @@ var App = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function () {
 });
 /* harmony default export */ __webpack_exports__["default"] = (App);
 
+/***/ }),
+
+/***/ "./src/ts/math.ts":
+/*!************************!*\
+  !*** ./src/ts/math.ts ***!
+  \************************/
+/***/ (function(__unused_webpack_module, exports) {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.sum = void 0;
+function sum(num1, num2) {
+    return num1 + num2;
+}
+exports.sum = sum;
+
+
 /***/ })
 
 /******/ 	});
@@ -8129,7 +8146,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
 /* harmony import */ var _react_App_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./react/App.jsx */ "./src/react/App.jsx");
+/* harmony import */ var _ts_math_ts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ts/math.ts */ "./src/ts/math.ts");
 //引入react组件
+
 
 
 
@@ -8156,6 +8175,9 @@ console.log(nickname.includes('coder'));
 //编写react代码
 var root = react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot(document.querySelector("#root"));
 root.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_react_App_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+
+//使用ts代码
+console.log((0,_ts_math_ts__WEBPACK_IMPORTED_MODULE_3__.sum)(20, 30));
 }();
 /******/ })()
 ;

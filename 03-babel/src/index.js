@@ -2,6 +2,7 @@
 import React from 'react';
 import ReactDOM  from 'react-dom/client';
 import App from './react/App.jsx'
+import {sum}  from './ts/math.ts'
 //1.ES6中使用的常量
 const message = "I am a message";
 console.log(message);
@@ -21,3 +22,6 @@ console.log(nickname.includes('coder'));
 //编写react代码
 const root=ReactDOM.createRoot(document.querySelector("#root"))
 root.render(<App/>)
+
+//使用ts代码
+console.log(sum(20,30));
