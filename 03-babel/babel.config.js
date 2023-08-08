@@ -12,6 +12,14 @@ module.exports = {
       },
     ],
     //react转换的预设
-    ["@babel/preset-react"]
+    ["@babel/preset-react"],
+    //ts转换的预设
+    [
+      "@babel/preset-typescript",
+      {
+        corejs: 3,
+        useBuiltIns: "usage",
+      }
+    ],
   ],
 };

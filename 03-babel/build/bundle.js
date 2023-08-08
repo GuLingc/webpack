@@ -8042,16 +8042,24 @@ var App = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function () {
 /*!************************!*\
   !*** ./src/ts/math.ts ***!
   \************************/
-/***/ (function(__unused_webpack_module, exports) {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.sum = void 0;
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   formatPrice: function() { return /* binding */ formatPrice; },
+/* harmony export */   sum: function() { return /* binding */ sum; }
+/* harmony export */ });
 function sum(num1, num2) {
-    return num1 + num2;
+  return num1 + num2;
 }
-exports.sum = sum;
-
+function formatPrice(priceString) {
+  //因为下方的ts中使用了es新推出的includes()方法，为了进行正常的使用所以会对其进行补丁和预设
+  if (priceString.includes('$')) {
+    return "xxxx";
+  } else {
+    return "yyy";
+  }
+}
 
 /***/ })
 

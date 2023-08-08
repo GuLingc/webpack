@@ -37,7 +37,9 @@ module.exports = {
       //解析ts
       {
       test: /\.ts$/,
-      use: "ts-loader" //安装ts-loader：npm install ts-loader -D   下一步创建tsconfig文件：tsc --init
+      // use: "ts-loader" //安装ts-loader：npm install ts-loader -D   下一步创建tsconfig文件：tsc --init
+      //为了方便以后的运行配置，或者如果ts文件中出现了es新出的方法进行补丁建议使用babel-loader
+      use: 'babel-loader'
       }
     ],
   },
