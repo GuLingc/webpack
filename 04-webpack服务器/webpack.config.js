@@ -20,6 +20,15 @@ module.exports = {
   //存放静态文件的文件夹，如果文件夹名称是public则可以默认不写，因为它是默认值
   devServer: {
     static: ["public"],
+    proxy: {
+      "/api": {
+        target: "http://localhost:9000",
+        pathRewrite: {
+          "^/api": "",
+        },
+        changeOrigin: true
+      },
+    },
   },
   module: {
     rules: [

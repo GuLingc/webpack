@@ -1,8 +1,9 @@
 //引入react组件
-import React from 'react';
-import ReactDOM  from 'react-dom/client';
-import App from './react/App.jsx'
-import {sum}  from './ts/math.ts'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./react/App.jsx";
+import { sum } from "./ts/math.ts";
+import axios from "axios";
 //1.ES6中使用的常量
 const message = "I am a message";
 console.log(message);
@@ -10,21 +11,26 @@ console.log(message);
 const foo = () => {
   console.log("I am food");
 };
-foo()
+foo();
 //3.对象结构
-const obj={name:'why',age:18}
-const {name,age}=obj
-console.log(name,age);
+const obj = { name: "why", age: 18 };
+const { name, age } = obj;
+console.log(name, age);
 //4.使用字符串中includes方法（es6以后的版本新出的）
-const nickname='coderwhy'
-console.log(nickname.includes('coder'));
+const nickname = "coderwhy";
+console.log(nickname.includes("coder"));
 
 //编写react代码
-const root=ReactDOM.createRoot(document.querySelector("#root"))
-root.render(<App/>)
+const root = ReactDOM.createRoot(document.querySelector("#root"));
+root.render(<App />);
 
 //使用ts代码
-console.log(sum(20,30));
+console.log(sum(20, 30));
 
 //最新编写的代码
 console.log("hahahha");
+
+//发送网络请求：   安装axios：  npm install axios
+axios.get("/api/users/list").then((res) => {
+  console.log(res.data);
+});
