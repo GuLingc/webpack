@@ -29,6 +29,7 @@ module.exports = {
         changeOrigin: true
       },
     },
+    historyApiFallback: true,
   },
   module: {
     rules: [
