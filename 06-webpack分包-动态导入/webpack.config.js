@@ -14,6 +14,10 @@ module.exports = {
     // filename: "bundle.js",
     //多入口文件，输出多个包文件，应该采用占位符，否则多个入口文件对应一个出口文件会报错。name占位符取得值是入口文件对象中的属性名
     filename: "bundle.js",
+
+    //单独对分包的文件进行命名
+    chunkFilename: '[name]_chunk.js',
+
     // 重新打包时，先将之前打包得文件夹删除掉
     clean: true,
   },

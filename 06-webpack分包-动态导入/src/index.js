@@ -18,8 +18,12 @@ document.body.append(btn2);
 //动态导入，符合某一条件的时候再下载对应的文件
 //利用的懒加载
 btn1.onclick = function () {
-  import("./router/about");
+  //自定义生成的包文件命名，注意：注释的样式不能更改/* webpackChunkName: 自定义的名字 */,它会覆盖再webpack.config.js中生成的命名
+  import(/* webpackChunkName: "about" */"./router/about").then((res) => {
+    res.about();
+    res.default;
+  });
 };
 btn2.onclick = function () {
-  import("./router/category");
+  import(/* webpackChunkName: "category" */"./router/category");
 };

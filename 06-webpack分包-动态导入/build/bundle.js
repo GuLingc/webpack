@@ -304,12 +304,16 @@ btn2.textContent = "分类";
 document.body.append(btn1);
 document.body.append(btn2);
 //动态导入，符合某一条件的时候再下载对应的文件
-
+//利用的懒加载
 btn1.onclick = function () {
-  __webpack_require__.e(/*! import() */ "src_router_about_js").then(__webpack_require__.t.bind(__webpack_require__, /*! ./router/about */ "./src/router/about.js", 23));
+  //自定义生成的包文件命名，注意：注释的样式不能更改/* webpackChunkName: 自定义的名字 */,它会覆盖再webpack.config.js中生成的命名
+  __webpack_require__.e(/*! import() | about */ "about").then(__webpack_require__.bind(__webpack_require__, /*! ./router/about */ "./src/router/about.js")).then(function (res) {
+    res.about();
+    res.default;
+  });
 };
 btn2.onclick = function () {
-  __webpack_require__.e(/*! import() */ "src_router_category_js").then(__webpack_require__.t.bind(__webpack_require__, /*! ./router/category */ "./src/router/category.js", 23));
+  __webpack_require__.e(/*! import() | category */ "category").then(__webpack_require__.t.bind(__webpack_require__, /*! ./router/category */ "./src/router/category.js", 23));
 };
 /******/ })()
 ;
