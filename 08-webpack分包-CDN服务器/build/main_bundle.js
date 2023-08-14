@@ -8,13 +8,14 @@
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _utils_foo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utils/foo */ "./src/utils/foo.js");
-/* harmony import */ var _utils_foo__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_utils_foo__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _utils_bar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./utils/bar */ "./src/utils/bar.js");
-/* harmony import */ var _utils_bar__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_utils_bar__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "axios");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _utils_foo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./utils/foo */ "./src/utils/foo.js");
+/* harmony import */ var _utils_foo__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_utils_foo__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _utils_bar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./utils/bar */ "./src/utils/bar.js");
+/* harmony import */ var _utils_bar__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_utils_bar__WEBPACK_IMPORTED_MODULE_3__);
 //导入写好的文件,直接导入全部的文件，性能不好
 // import './router/about'
 // import './router/category'
@@ -30,7 +31,7 @@ var fool = function fool() {
 fool();
 
 //使用axios
-axios__WEBPACK_IMPORTED_MODULE_3__["default"].get("http://123.207.32.32:8000/home/multidata").then(function (res) {
+axios__WEBPACK_IMPORTED_MODULE_0___default().get("http://123.207.32.32:8000/home/multidata").then(function (res) {
   console.log(res);
 });
 var btn1 = document.createElement("button");
@@ -52,6 +53,26 @@ btn2.onclick = function () {
   __webpack_require__.e(/*! import() | category */ 34).then(__webpack_require__.t.bind(__webpack_require__, /*! ./router/category */ "./src/router/category.js", 23));
 };
 
+/***/ }),
+
+/***/ "react":
+/*!************************!*\
+  !*** external "React" ***!
+  \************************/
+/***/ (function(module) {
+
+module.exports = React;
+
+/***/ }),
+
+/***/ "axios":
+/*!************************!*\
+  !*** external "axios" ***!
+  \************************/
+/***/ (function(module) {
+
+module.exports = axios;
+
 /***/ })
 
 },
@@ -65,7 +86,7 @@ btn2.onclick = function () {
 /******/ }();
 /******/ 
 /******/ var __webpack_exec__ = function(moduleId) { return __webpack_require__(__webpack_require__.s = moduleId); }
-/******/ __webpack_require__.O(0, [630,19], function() { return __webpack_exec__("./src/math.js"); });
+/******/ __webpack_require__.O(0, [19], function() { return __webpack_exec__("./src/math.js"); });
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
