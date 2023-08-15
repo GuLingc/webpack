@@ -2,7 +2,6 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 const TerserPlugin = require("terser-webpack-plugin");
 //引入css插件
-const MinCssExtractPlugin = require("mini-css-extract-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
@@ -88,7 +87,7 @@ module.exports = {
         test: /\.css$/,
         use: [
           //"style-loader",//开发环境中使用，以内联的形式存在html中
-          MinCssExtractPlugin.loader,//生产环境中使用，以文件的形式引入在html中
+          MiniCssExtractPlugin.loader,//生产环境中使用，以文件的形式引入在html中
            "css-loader"
           ],
       },
