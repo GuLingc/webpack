@@ -1,5 +1,9 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
+const TerserPlugin = require("terser-webpack-plugin");
+//引入css插件
+const MinCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   mode: "development",
@@ -7,8 +11,8 @@ module.exports = {
   entry: "./src/math.js",
   output: {
     path: path.resolve(__dirname, "build"),
-    filename: "[name]_bundle.js",
-    chunkFilename: "[name]_chunk.js",
+    filename: "js/[name]_bundle.js",
+    chunkFilename: "js/[name]_chunk.js",
     clean: true,
   },
   //排除某些包不需要进行打包，利用cdn并在相关网站中找到对应的包的链接写在入口的html文件script标签中，页面即可正常显示
@@ -16,7 +20,7 @@ module.exports = {
     //key属性名：排除的框架的名称
     //value值：从CDN地址请求下来的js中提供对应的名称
     react: "React",
-    axios: "axios"
+    axios: "axios",
   },
   resolve: {
     extensions: [".js", ".json", ".wasm", ".jsx", ".vue", ".ts"],
@@ -39,10 +43,10 @@ module.exports = {
     //developend:named   和在开发模式生成下的名字一样
     //production:  deterministic  和在生产模式生成下的名字一样，生成固定的id
     //webpack4中使用natural： 按包文件顺序生成id值，id值可变
-    chunkIds: 'deterministic',
+    chunkIds: "deterministic",
     //runtime的代码是否抽取到单独的包中（vue2脚手架）
     runtimeChunk: {
-      name: "runtime"
+      name: "runtime",
     },
     //动态分包配置
     splitChunks: {
@@ -59,11 +63,11 @@ module.exports = {
       cacheGroups: {
         venders: {
           test: /[\\/]node_modules[\\/]/,
-          filename: "[name]_venders.js",
+          filename: "js/[name]_venders.js",
         },
         utils: {
           test: /utils/,
-          filename: "[name]_utils.js",
+          filename: "js/[name]_utils.js",
         },
       },
     },
@@ -80,11 +84,26 @@ module.exports = {
         test: /\.ts$/,
         use: "babel-loader",
       },
+      {
+        test: /\.css$/,
+        use: [
+          //"style-loader",//开发环境中使用，以内联的形式存在html中
+          MinCssExtractPlugin.loader,//生产环境中使用，以文件的形式引入在html中
+           "css-loader"
+          ],
+      },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: "./index.html",
     }),
+    //完成对css的提取
+    new MiniCssExtractPlugin({
+    //基础引入生成的饿文件样式：import './css/index.css'
+    filename: 'css/[name].css',
+    //css文件动态导入后提取的文件样式: import('./css/index.css')
+    chunkFilename: 'css/[name]_chunk.css'
+    })
   ],
 };
