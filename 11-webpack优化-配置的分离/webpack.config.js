@@ -1,11 +1,14 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 const TerserPlugin = require("terser-webpack-plugin");
+const { ProvidePlugin } = require("webpack");
 //引入css插件
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+//引入css压缩插件
+const CSSMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 module.exports = {
-  mode: "development",
+  mode: "production",
   devtool: false,
   entry: "./src/math.js",
   output: {
@@ -70,6 +73,28 @@ module.exports = {
         },
       },
     },
+    minimize: true,
+    //代码优先：TerserPlugin=>让代码更简单=>Terser
+    minimizer: [
+      //JS压缩插件： TerserPlugin
+      new TerserPlugin({
+        extractComments: false,
+        terserOptions: {
+          compress: {
+            arguments: true,
+            //默认为true,即打包文件中没有用的代码（例如：定义函数却没有调用）会被删除，在打包文件中不存在
+            unused: true,
+          },
+          mangle: true,
+          keep_fnames: true,
+        },
+      }),
+      //CSS压缩插件:CSSMinimizerPlugin
+      new CSSMinimizerPlugin({
+        //parallel的默认值是true,所以可以不写
+        // parallel:true
+      }),
+    ],
   },
   module: {
     rules: [
@@ -87,9 +112,9 @@ module.exports = {
         test: /\.css$/,
         use: [
           //"style-loader",//开发环境中使用，以内联的形式存在html中
-          MiniCssExtractPlugin.loader,//生产环境中使用，以文件的形式引入在html中
-           "css-loader"
-          ],
+          MiniCssExtractPlugin.loader, //生产环境中使用，以文件的形式引入在html中
+          "css-loader",
+        ],
       },
     ],
   },
@@ -99,10 +124,10 @@ module.exports = {
     }),
     //完成对css的提取
     new MiniCssExtractPlugin({
-    //基础引入css（import './css/index.css'）生成的文件样式：
-    filename: 'css/[name].css',
-    //css文件动态导入( import('./css/index.css'))后提取的文件样式:
-    chunkFilename: 'css/[name]_chunk.css'
-    })
+      //基础引入css（import './css/index.css'）生成的文件样式：
+      filename: "css/[name].css",
+      //css文件动态导入( import('./css/index.css'))后提取的文件样式:
+      chunkFilename: "css/[name]_chunk.css",
+    }),
   ],
 };

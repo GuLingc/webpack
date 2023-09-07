@@ -1,0 +1,1 @@
+(self.webpackChunk_03_babel=self.webpackChunk_03_babel||[]).push([[19],{197:function(){!function bar(){console.log("I am bar")}()},497:function(){!function foo(){console.log("I am foo")}()}}]);
