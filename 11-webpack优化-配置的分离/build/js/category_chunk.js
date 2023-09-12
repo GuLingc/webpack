@@ -1,0 +1,1 @@
+(self.webpackChunk_03_babel=self.webpackChunk_03_babel||[]).push([[34],{479:function(){var e=document.createElement("h1");e.textContent="Category page",document.body.append(e)}}]);

@@ -1,45 +1,13 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const path = require("path");
 const TerserPlugin = require("terser-webpack-plugin");
-const { ProvidePlugin } = require("webpack");
 //引入css插件
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 //引入css压缩插件
 const CSSMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
+//module.exports={}相当于webpack导出了一个对象，实际上webpack还可以导出一个函数
 module.exports = {
   mode: "production",
-  devtool: false,
-  entry: "./src/math.js",
-  output: {
-    path: path.resolve(__dirname, "build"),
-    filename: "js/[name]_bundle.js",
-    chunkFilename: "js/[name]_chunk.js",
-    clean: true,
-  },
-  //排除某些包不需要进行打包，利用cdn并在相关网站中找到对应的包的链接写在入口的html文件script标签中，页面即可正常显示
-  externals: {
-    //key属性名：排除的框架的名称
-    //value值：从CDN地址请求下来的js中提供对应的名称
-    react: "React",
-    axios: "axios",
-  },
-  resolve: {
-    extensions: [".js", ".json", ".wasm", ".jsx", ".vue", ".ts"],
-  },
-  devServer: {
-    proxy: {
-      "/api": {
-        target: "http://localhost:9000",
-        pathRewrite: {
-          "^/api": "",
-        },
-        changeOrigin: true,
-      },
-    },
-    historyApiFallback: true,
-  },
-  //优化配置
+  //优化配置：一般只用于生产环境，开发环境中不需要优化
   optimization: {
     //配置打包后生成的样式
     //developend:named   和在开发模式生成下的名字一样
@@ -96,33 +64,8 @@ module.exports = {
       }),
     ],
   },
-  module: {
-    rules: [
-      {
-        test: /\.jsx?$/,
-        use: {
-          loader: "babel-loader",
-        },
-      },
-      {
-        test: /\.ts$/,
-        use: "babel-loader",
-      },
-      {
-        test: /\.css$/,
-        use: [
-          //"style-loader",//开发环境中使用，以内联的形式存在html中
-          MiniCssExtractPlugin.loader, //生产环境中使用，以文件的形式引入在html中
-          "css-loader",
-        ],
-      },
-    ],
-  },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: "./index.html",
-    }),
-    //完成对css的提取
+    //完成对css的提取：只有在最终打包的生产环境下才做提取，开发环境下不需要
     new MiniCssExtractPlugin({
       //基础引入css（import './css/index.css'）生成的文件样式：
       filename: "css/[name].css",
